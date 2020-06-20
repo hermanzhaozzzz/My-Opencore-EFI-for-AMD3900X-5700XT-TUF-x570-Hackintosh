@@ -46,7 +46,7 @@ DO NOT edit the plist file **without** using Xcode or propertree!
 
 REMEMBER to update your SMBIOS info.
 
-![](pictures/SMBIOSinfo.png)
+![](pictures/SMBIOSinfo.jpg)
 
 Works fine:
 
