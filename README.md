@@ -3,12 +3,14 @@
 >
 > E-mail: hermanzhaozzzz@gmail.com
 >
-> Opencore-version-is-0.5.9.txt
->
 
 ---
 
 Opencore version: 0.5.9
+
+---
+
+When you use the same computer parts as me, you can gain a perfect AMD Mac OS machine by using my EFI.
 
 ---
 
@@ -30,9 +32,9 @@ SSD/固态硬盘:
 
 - Windows10-西部数据 SN550 500G NVMe协议
 
-- Mac OS Catalina10.15.5-海康威视E2000L
+- Mac OS(Catalina10.15.5)-海康威视E2000L NVMe协议
 
-WIFI/无线网卡+Bluetooth/蓝牙: 奋威 FV-T919 - 1750M 
+Wireless card/无线网卡+Bluetooth/蓝牙: 奋威 FV-T919 - 1750M 
 
 
 
@@ -41,4 +43,20 @@ For debug, please use the **config-debug-model.plist** to see the boot log
 For normal work, please use the **config.plist**
 
 DO NOT edit the plist file **without** using Xcode or propertree!
+
+REMEMBER to update your SMBIOS info.
+
+![](https://tva1.sinaimg.cn/large/007S8ZIlly1gfzdtspmblj30pc0okdkh.jpg)
+
+Works fine:
+
+- AMD CPU
+- 5700XT GPU
+- Wireless network card
+- Bluetooth
+- Sleep wake
+
+Not work:
+
+- Sidecar(Because this CPU do not have Core graphics)
 
