@@ -46,7 +46,7 @@ DO NOT edit the plist file **without** using Xcode or propertree!
 
 REMEMBER to update your SMBIOS info.
 
-![](pictures/SMBIOSinfo.jpg)
+![image](https://github.com/hermanzhaozzzz/My-Opencore-EFI-for-AMD3900X-5700XT-TUF-x570-Hackintosh/blob/master/pictures/SMBIOSinfo.jpg)
 
 Works fine:
 
