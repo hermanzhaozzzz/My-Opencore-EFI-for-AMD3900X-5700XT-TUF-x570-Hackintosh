@@ -9,6 +9,8 @@
 ---
 
 Opencore version: 0.5.9
+Mac OS version: Catalina 10.15.5
+In theory, the system can be automatically upgraded like a real MAC！
 
 ---
 
