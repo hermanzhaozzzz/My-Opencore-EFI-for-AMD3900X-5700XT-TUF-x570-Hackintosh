@@ -1,6 +1,8 @@
 # My-Opencore-EFI-for-AMD3900X-5700XT-TUF-x570-Hackintosh
 > This EFI is created by Herman ZHAO
 >
+> PhD student in Bioinformatics at THU and lab-work at PKU.
+>
 > E-mail: hermanzhaozzzz@gmail.com
 >
 
@@ -36,9 +38,7 @@ SSD/固态硬盘:
 
 Wireless card/无线网卡+Bluetooth/蓝牙: 奋威 FV-T919 - 1750M 
 
-
-
-For debug, please use the **config-debug-model.plist** to see the boot log
+Audio card: ESI Maya44e(I have put its driver into EFI folder, please check, install it after you run into the Mac OS system)
 
 For normal work, please use the **config.plist**
 
@@ -55,8 +55,19 @@ Works fine:
 - Wireless network card
 - Bluetooth
 - Sleep wake
+- Audio card in/out(Maya44e) works fine--You can alse use the audio card on the motherboard but I meet some bugs, when I try AppleALC.kext, the microphone don't work, and when I try VoodooHDA2.9.2.kext, It really works, but the Mac OS system could not be so stable. So if you use the same motherboard as me, I recommend you the Maya44e audio card. It works well, but you should buy two~four 6.5 to 3.5 convertor(one for in and one for out), by the way, it's awesome for recording the guitar music!
 
 Not work:
 
 - Sidecar(Because this CPU do not have Core graphics)
+
+
+
+Please! Please! <u>Please update your SMbios info!</u>
+
+Any question, you can talk with me by raise an issue, for learning from each other. English or Chinese is OK, but English is better for all users.
+
+
+
+I hope it can help.
 
