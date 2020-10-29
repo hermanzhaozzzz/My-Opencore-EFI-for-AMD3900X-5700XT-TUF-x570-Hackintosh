@@ -63,6 +63,8 @@ Not work:
 
 - Sidecar(Because this CPU do not have Core graphics)
 
+Tips:
+- Modify the BIOS setting to turn on the Virtual function of AMD cpu(for VMWare)
 
 
 Please! Please! <u>Please update your SMbios info!</u>
