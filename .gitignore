@@ -1,0 +1,14 @@
+/public/
+/.ipynb_checkpoints/
+/.deploy_git/
+/.texpadtmp/
+/.Trash/
+/.snakemake/
+/tmpdir_*/
+sna*.err
+sna*.out
+job.srp*
+.DS_Store
+.Rhistory
+.localized
+slurm-*.out

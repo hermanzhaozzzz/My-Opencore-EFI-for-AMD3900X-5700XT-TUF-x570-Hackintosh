@@ -1,19 +1,19 @@
 # My-Opencore-EFI-for-AMD3900X-5700XT-TUF-x570-Hackintosh
 > This EFI is created by Herman ZHAO
 >
-> PhD student in Bioinformatics at THU and lab-work at PKU.
->
 > E-mail: hermanzhaozzzz@gmail.com
 >
 
 ---
 
-Opencore version: 0.6.4
-Mac OS version: Big Sur 11.1
+Opencore version: 0.6.8
+Mac OS version: Big Sur 11.5.1
 
 ---
 
 When you use the same computer parts as me, you can gain a perfect AMD Mac OS machine by using my EFI.
+
+Reference: https://github.com/wilgnne/hackintosh-ryzentosh-TUF_X570-PLUS
 
 ---
 
@@ -56,7 +56,7 @@ Works fine:
 - Wireless network card
 - Bluetooth
 - Sleep wake
-- Audio card: the mother board's audio card not work now and I'am fixing it. A usb audio card is used now.
+- Audio card
 
 Not work:
 
@@ -65,5 +65,4 @@ Not work:
 Tips:
 - Modify the BIOS setting to turn on the Virtual function of AMD cpu(for VMWare)
 
-
-Please! Please! <u>Please update your SMbios info!</u>
+<u>Please update your SMbios info!</u>
