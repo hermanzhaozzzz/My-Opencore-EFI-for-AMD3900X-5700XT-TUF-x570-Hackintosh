@@ -7,7 +7,7 @@
 ---
 
 Opencore version: 0.6.8
-Mac OS version: Big Sur 11.5.1
+Mac OS version: Big Sur 11.6.7 (20G630)
 
 ---
 
