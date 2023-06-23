@@ -6,14 +6,13 @@
 
 ---
 
-Opencore version: 0.6.8
-Mac OS version: Big Sur 11.6.7 (20G630)
+-   Opencore version: 0.9.3
+
+-   Mac OS version: Big Sur 11.3
 
 ---
 
 When you use the same computer parts as me, you can gain a perfect AMD Mac OS machine by using my EFI.
-
-Reference: https://github.com/wilgnne/hackintosh-ryzentosh-TUF_X570-PLUS
 
 ---
 
@@ -29,13 +28,13 @@ Power: 海韵/SEASONIC GX750 750W 金牌全模
 
 CPU一体式水冷: 恩杰NZXT Kraken 海妖X73 360mm
 
-内存: 芝奇G. SKILL 焰光戟 8G*2 F4-3600C16D-16GTZNC （预算有限，后面会升级64G）
+内存: 芝奇G. SKILL 焰光戟 8G*4 F4-3600C16D-16GTZNC
 
 SSD/固态硬盘: 
 
 - Windows10-西部数据 SN550 500G NVMe协议
 
-- Mac OS(Catalina10.15.5)-海康威视E2000L NVMe协议
+- Mac OS(Catalina10.15.5)-三星 970 EVO Plus
 
 Wireless card/无线网卡+Bluetooth/蓝牙: 奋威 FV-T919 - 1750M 
 
@@ -47,7 +46,7 @@ DO NOT edit the plist file **without** using Xcode or propertree!
 
 REMEMBER to update your SMBIOS info.
 
-![image](https://tva1.sinaimg.cn/large/007S8ZIlly1gfzdtspmblj30pc0okdkh.jpg)
+![image](pictures/SMBIOSinfo.jpg)
 
 Works fine:
 
@@ -64,5 +63,8 @@ Not work:
 
 Tips:
 - Modify the BIOS setting to turn on the Virtual function of AMD cpu(for VMWare)
+- BIOS Overclocking reference:
+    - Recommend `flck frequency` ≤1800 MHz (I use 1800 MHz)
+    - Recommend`memory frequency`≤3600 Mhz (I use 3333 MHz)
 
 <u>Please update your SMbios info!</u>
