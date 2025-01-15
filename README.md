@@ -6,9 +6,9 @@
 
 ---
 
--   Opencore version: 0.9.3
+-   Opencore version: 1.0.3
 
--   Mac OS version: Big Sur 11.3
+-   Mac OS version: 15.2
 
 ---
 
@@ -68,3 +68,6 @@ Tips:
     - Recommend`memory frequency`≤3600 Mhz (I use 3333 MHz)
 
 <u>Please update your SMbios info!</u>
+
+
+AFTER you successfully login the system, you may find that WIFI and bluetooth can not work, you should install [OpenCore-Patcher](https://dortania.github.io/OpenCore-Legacy-Patcher/) and run the "Post-Install Root Patch" protocol and reboot. Then, you will make it!
