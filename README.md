@@ -6,6 +6,8 @@ Created and maintained by Herman ZHAO
 
 Contact: hermanzhaozzzz@gmail.com
 
+Last maintained: August 12, 2026
+
 ## Release status
 
 | Item | Version or status |
@@ -136,15 +138,24 @@ unavailable. Install
 [OpenCore Legacy Patcher](https://dortania.github.io/OpenCore-Legacy-Patcher/),
 run **Post-Install Root Patch**, and reboot.
 
-## Companion tool
+## Extra Tutorials and Resources
 
-[LiquidBar](https://github.com/hermanzhaozzzz/LiquidBar) is a lightweight native
-macOS menu-bar app built and tested with this EFI setup. It reads Ryzen CPU
-temperature through VirtualSMC/SMCAMDProcessor and monitors or controls the
-NZXT Kraken X73 and Smart Device V2 through liquidctl.
-
-## Tutorials
+- [LiquidBar](https://github.com/hermanzhaozzzz/LiquidBar) — a utility I developed
+  to control NZXT case fans and liquid-cooling pump power while monitoring
+  temperatures. It is strongly recommended for users with the same NZXT case
+  and liquid cooler.
 
 - [Use the RX 5700 XT from PyTorch through MPS/Metal](tutorial_pytorch-via-this_AMD5700xtGPU/README.md) —
   tested `uv` and Conda installation, minimal GPU verification, a performance
   check and measured results.
+
+## Support this project
+
+Preparing, updating and thoroughly testing this EFI and its tutorials takes
+considerable time and effort. If this project has helped you, please consider
+buying me a coffee. Support is entirely optional, and your encouragement is
+sincerely appreciated. Thank you!
+
+| Alipay | WeChat Pay |
+|:---:|:---:|
+| <img src="pictures/sponsor-alipay.jpg" alt="Alipay support QR code" width="280"> | <img src="pictures/sponsor-wechat-pay.jpg" alt="WeChat Pay support QR code" width="280"> |

@@ -6,6 +6,8 @@
 
 联系邮箱：hermanzhaozzzz@gmail.com
 
+本 EFI 最新维护时间：2026 年 8 月 12 日
+
 ## 当前版本
 
 | 项目 | 版本或状态 |
@@ -122,13 +124,21 @@ OpenCore 1.0.7 已在 **macOS Sequoia 15.2** 实际启动并验证以下功能�
 [OpenCore Legacy Patcher](https://dortania.github.io/OpenCore-Legacy-Patcher/)，
 执行 **Post-Install Root Patch**，然后重启。
 
-## 配套工具
+## 额外教程福利
 
-[LiquidBar](https://github.com/hermanzhaozzzz/LiquidBar) 是针对本 EFI 配置开发并
-测试的轻量原生 macOS 菜单栏工具。它通过 VirtualSMC/SMCAMDProcessor 读取
-Ryzen CPU 温度，并通过 liquidctl 监控或控制 NZXT Kraken X73 与 Smart Device V2。
-
-## 教程
+- [LiquidBar](https://github.com/hermanzhaozzzz/LiquidBar) — 我开发的一套用于控制
+  恩杰 NZXT 机箱风扇和水冷泵功率、监控温度的程序。强烈建议使用同款机箱和
+  水冷的用户安装。
 
 - [通过 MPS/Metal 在 PyTorch 中调用 RX 5700 XT](tutorial_pytorch-via-this_AMD5700xtGPU/README_CN.md) —
   包含经过验证的 `uv` 和 Conda 安装方法、最小 GPU 验证、性能测试及本机实测结果。
+
+## 支持与赞助
+
+整理、升级并实际测试这套 EFI 和相关教程需要投入不少时间与精力。如果本项目
+对您有所帮助，欢迎请我喝杯咖啡。赞助完全自愿，您的认可与支持就是我继续维护
+和分享的动力，非常感谢！
+
+| 支付宝 | 微信支付 |
+|:---:|:---:|
+| <img src="pictures/sponsor-alipay.jpg" alt="支付宝赞助二维码" width="280"> | <img src="pictures/sponsor-wechat-pay.jpg" alt="微信支付赞助二维码" width="280"> |
