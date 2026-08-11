@@ -46,6 +46,22 @@
 > SystemUUID 和 ROM，**并且在 GenSMBIOS 中必须选择 `MacPro7,1` 机型**。
 > 不要选择其他 Mac 机型，也不要直接使用仓库中的身份信息。
 
+## 启动路径要求
+
+> [!IMPORTANT]
+> 本仓库及 Release 压缩包包含 `EFI/OC/OpenCore.efi`，但**有意不包含
+> `EFI/BOOT/BOOTx64.efi`**。这是维护者当前机器已经实际验证的结构，同时避免
+> 重新引入此前已经清除的重复 `NO NAME` 启动项。
+
+- 主板固件中必须存在直接指向 `\EFI\OC\OpenCore.efi` 的 UEFI 启动项。
+- 在新硬盘上安装，或固件启动项丢失后，请使用主板的 **Add New Boot Option**
+  功能或可信的 UEFI Shell，重新创建指向 `\EFI\OC\OpenCore.efi` 的启动项。
+- 部分主板只能自动识别标准回退路径 `\EFI\BOOT\BOOTx64.efi`。这类主板可能
+  仍需单独添加回退引导，但这不属于当前实测发行内容，并可能产生重复项或
+  `NO NAME`。修改启动路径前务必完整备份一份已知正常的 EFI。
+- 因此，这不是适用于任意硬件、复制后即可直接启动的通用 EFI。启动前必须替换
+  公开演示用的 SMBIOS，并逐项检查与硬件相关的配置。
+
 ## 理论支持与实测范围
 
 ### 理论覆盖
@@ -137,6 +153,13 @@ OpenCore 1.0.7 已在 **macOS Sequoia 15.2** 实际启动并验证以下功能�
 
 - [通过 MPS/Metal 在 PyTorch 中调用 RX 5700 XT](tutorial_pytorch-via-this_AMD5700xtGPU/README_CN.md) —
   包含经过验证的 `uv` 和 Conda 安装方法、最小 GPU 验证、性能测试及本机实测结果。
+
+## 许可证与第三方组件
+
+由本仓库维护者拥有版权的原创内容按照 [LICENSE](LICENSE) 授权。仓库内附带的
+OpenCore 文件、Kext、Apple 组件、AMD 内核补丁及其他上游材料继续遵循各自的
+版权和许可证，本项目不会对它们重新授权。组件来源、版本及许可证信息请参阅
+[THIRD_PARTY_NOTICES_CN.md](THIRD_PARTY_NOTICES_CN.md)。
 
 ## 支持与赞助
 
