@@ -71,3 +71,14 @@ Tips:
 
 
 AFTER you successfully login the system, you may find that WIFI and bluetooth can not work, you should install [OpenCore-Patcher](https://dortania.github.io/OpenCore-Legacy-Patcher/) and run the "Post-Install Root Patch" protocol and reboot. Then, you will make it!
+
+## Companion tool / 配套工具
+
+[LiquidBar](https://github.com/hermanzhaozzzz/LiquidBar) is a lightweight native
+macOS menu-bar app built and tested with this EFI setup. It reads the Ryzen CPU
+temperature through VirtualSMC/SMCAMDProcessor and monitors or controls the NZXT
+Kraken X73 and Smart Device V2 through liquidctl.
+
+[LiquidBar](https://github.com/hermanzhaozzzz/LiquidBar) 是针对本 EFI 配置开发并测试的
+轻量原生 macOS 菜单栏工具。它通过 VirtualSMC/SMCAMDProcessor 读取 Ryzen CPU 温度，
+并通过 liquidctl 监控及控制 NZXT Kraken X73 与 Smart Device V2。
