@@ -46,6 +46,16 @@ DO NOT edit the plist file **without** using Xcode or propertree!
 
 REMEMBER to update your SMBIOS info.
 
+> [!WARNING]
+> The SMBIOS identifiers included in this public repository are demonstration
+> values only. Generate your own Serial, MLB, SystemUUID, and ROM with
+> [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS) before booting this EFI.
+> Do not reuse the included identifiers.
+>
+> 本公开仓库内的 SMBIOS 身份仅用于示例。使用此 EFI 前，请通过
+> [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS) 生成自己的 Serial、MLB、
+> SystemUUID 和 ROM，不要直接使用仓库内的身份信息。
+
 ![image](pictures/SMBIOSinfo.jpg)
 
 Works fine:
