@@ -103,10 +103,15 @@ expect an iGPU path for background graphics and video workloads.
 
 On macOS 15.2, `iMac20,2` caused visible stuttering during Bilibili video
 playback and screen sharing. Switching to `MacPro7,1` allowed the RX 5700 XT to
-handle those workloads and removed the stuttering in testing. See
-[Dortania's SMBIOS guidance](https://dortania.github.io/OpenCore-Install-Guide/extras/smbios-support.html)
-for the rationale behind using an iMac Pro or Mac Pro SMBIOS on a CPU without
-an iGPU.
+handle those workloads and removed the stuttering in testing. Further testing
+with **eight simultaneous 4K video streams remained very smooth**. A sustained
+PyTorch MPS stress test on the RX 5700 XT also completed without issues. See the
+[PyTorch MPS tutorial and measured results](tutorial_pytorch-via-this_AMD5700xtGPU/README.md)
+for the environment setup and test code.
+
+For the rationale behind using an iMac Pro or Mac Pro SMBIOS on a CPU without
+an iGPU, see
+[Dortania's SMBIOS guidance](https://dortania.github.io/OpenCore-Install-Guide/extras/smbios-support.html).
 
 ![SMBIOS information](pictures/SMBIOSinfo.jpg)
 

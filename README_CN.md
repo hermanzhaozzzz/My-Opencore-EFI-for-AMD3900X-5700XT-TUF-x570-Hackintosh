@@ -93,6 +93,10 @@ OpenCore 1.0.7 已在 **macOS Sequoia 15.2** 实际启动并验证以下功能�
 
 在 macOS 15.2 的实际测试中，`iMac20,2` 会导致 Bilibili 视频播放及屏幕共享
 出现明显卡顿；切换为 `MacPro7,1` 后，这些工作由 RX 5700 XT 承担，卡顿消失。
+进一步测试中，**同时播放 8 路 4K 视频仍然非常流畅**；同时使用 PyTorch MPS
+对 RX 5700 XT 进行了持续压力测试，全程运行正常。环境安装方法、测试代码和实测
+结果请参阅 [PyTorch MPS 教程](tutorial_pytorch-via-this_AMD5700xtGPU/README_CN.md)。
+
 关于无核显 CPU 为什么应使用 iMac Pro 或 Mac Pro SMBIOS，可参阅
 [Dortania 的 SMBIOS 指南](https://dortania.github.io/OpenCore-Install-Guide/extras/smbios-support.html)。
 
