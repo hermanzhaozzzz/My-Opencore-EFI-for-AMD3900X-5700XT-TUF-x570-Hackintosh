@@ -88,7 +88,6 @@ This OpenCore 1.0.7 release was booted and tested on **macOS Sequoia 15.2**.
 The following items were verified after the upgrade:
 
 - macOS and Windows boot correctly from the OpenCore picker
-- No duplicate `NO NAME` boot entry
 - Wi-Fi, Bluetooth, USB 2.0/3.0, and audio
 - RX 5700 XT graphics acceleration
 - Smooth Bilibili video playback and screen sharing
@@ -98,7 +97,7 @@ machine currently uses Wi-Fi. Other macOS versions remain unverified unless
 explicitly documented here.
 
 本次 OpenCore 1.0.7 已在 **macOS Sequoia 15.2** 实际启动并完成测试：macOS 与
-Windows 双系统引导、无重复 `NO NAME` 启动项、Wi-Fi、蓝牙、USB 2.0/3.0、声音、
+Windows 双系统引导、Wi-Fi、蓝牙、USB 2.0/3.0、声音、
 RX 5700 XT 图形加速、Bilibili 视频播放和屏幕共享均正常。由于当前使用 Wi-Fi，
 本次没有重新测试 Realtek 有线网卡。未在此明确列出的系统版本均视为未实测。
 
