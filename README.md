@@ -32,7 +32,7 @@ This EFI is intended for systems using the same or closely matching hardware.
 | Windows SSD | Western Digital SN550 500 GB NVMe |
 | macOS SSD | Samsung 970 EVO Plus |
 | Wi-Fi / Bluetooth | Fenvi FV-T919 |
-| Audio | USB audio adapter |
+| Audio | Monitor audio over HDMI/DisplayPort; motherboard audio jacks tested working |
 
 ## Before using this EFI
 
@@ -69,7 +69,7 @@ items were verified after the upgrade:
 - macOS and Windows boot correctly from the OpenCore picker;
 - Wi-Fi and Bluetooth;
 - USB 2.0 and USB 3.0;
-- audio;
+- monitor audio over HDMI/DisplayPort and motherboard audio jacks;
 - RX 5700 XT graphics acceleration;
 - smooth Bilibili video playback and screen sharing.
 
@@ -117,7 +117,7 @@ an iGPU.
 - Bluetooth
 - AirDrop
 - Sleep and wake
-- USB audio
+- Monitor audio over HDMI/DisplayPort and motherboard audio jacks
 
 ## Known limitation
 

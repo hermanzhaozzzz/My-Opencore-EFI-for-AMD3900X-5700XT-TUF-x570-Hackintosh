@@ -32,7 +32,7 @@
 | Windows 固态硬盘 | 西部数据 SN550 500 GB NVMe |
 | macOS 固态硬盘 | 三星 970 EVO Plus |
 | Wi-Fi / 蓝牙 | 奋威 FV-T919 |
-| 声音 | USB 声卡 |
+| 声音 | 显示器通过 HDMI/DisplayPort 外接音频；主板音频接口已测试可用 |
 
 ## 使用前必读
 
@@ -64,7 +64,7 @@ OpenCore 1.0.7 已在 **macOS Sequoia 15.2** 实际启动并验证以下功能�
 - 从 OpenCore 选择器正常启动 macOS 和 Windows；
 - Wi-Fi 和蓝牙；
 - USB 2.0 和 USB 3.0；
-- 声音；
+- 显示器通过 HDMI/DisplayPort 外接音频，主板音频接口可用；
 - RX 5700 XT 图形加速；
 - Bilibili 视频流畅播放及屏幕共享。
 
@@ -105,7 +105,7 @@ OpenCore 1.0.7 已在 **macOS Sequoia 15.2** 实际启动并验证以下功能�
 - 蓝牙
 - AirDrop
 - 睡眠与唤醒
-- USB 声卡
+- 显示器通过 HDMI/DisplayPort 外接音频，主板音频接口可用
 
 ## 已知限制
 
