@@ -6,9 +6,11 @@
 
 ---
 
--   Opencore version: 1.0.3
+-   OpenCore version: **1.0.7 RELEASE** (`REL-107-2026-03-20`)
 
--   Mac OS version: 15.2
+-   Tested macOS version: **macOS Sequoia 15.2**
+
+-   Required SMBIOS: **MacPro7,1**
 
 ---
 
@@ -34,7 +36,7 @@ SSD/固态硬盘:
 
 - Windows10-西部数据 SN550 500G NVMe协议
 
-- Mac OS(Catalina10.15.5)-三星 970 EVO Plus
+- macOS（当前实测 Sequoia 15.2）- 三星 970 EVO Plus
 
 Wireless card/无线网卡+Bluetooth/蓝牙: 奋威 FV-T919 - 1750M 
 
@@ -55,6 +57,76 @@ REMEMBER to update your SMBIOS info.
 > 本公开仓库内的 SMBIOS 身份仅用于示例。使用此 EFI 前，请通过
 > [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS) 生成自己的 Serial、MLB、
 > SystemUUID 和 ROM，不要直接使用仓库内的身份信息。
+
+## Compatibility and tested scope / 理论支持与实测范围
+
+### Theoretical coverage / 理论覆盖
+
+- The bundled AMD Vanilla kernel patches cover Darwin 17 through Darwin 25,
+  corresponding to macOS 10.13 High Sierra through macOS 26 Tahoe. This only
+  describes the kernel-patch range and is **not** a guarantee that every macOS
+  release in that range has been tested with this complete EFI.
+- Considering the `MacPro7,1` SMBIOS, RX 5700 XT support, and the bundled
+  Broadcom/OCLP wireless stack, this repository is maintained primarily for
+  macOS 14 Sonoma and macOS 15 Sequoia.
+- macOS 26 Tahoe is covered by the AMD patch limits, but the complete EFI,
+  wireless root patches, USB stack, and third-party Kexts have not been
+  validated together. A direct major-version upgrade is therefore not
+  recommended.
+
+- 当前 AMD Vanilla 内核补丁理论覆盖 Darwin 17–25，即 macOS 10.13 High
+  Sierra 至 macOS 26 Tahoe。该范围只代表内核补丁的匹配范围，**不代表这套完整
+  EFI 已经在所有这些系统版本上测试通过**。
+- 结合 `MacPro7,1`、RX 5700 XT 以及当前 Broadcom/OCLP 无线方案，本仓库主要
+  面向 macOS 14 Sonoma 和 macOS 15 Sequoia。
+- AMD 补丁虽然已经覆盖 macOS 26 Tahoe，但完整 EFI、无线 Root Patch、USB 和
+  第三方 Kext 尚未组合验证，因此不建议直接进行大版本升级。
+
+### Actually validated / 实际测试
+
+This OpenCore 1.0.7 release was booted and tested on **macOS Sequoia 15.2**.
+The following items were verified after the upgrade:
+
+- macOS and Windows boot correctly from the OpenCore picker
+- No duplicate `NO NAME` boot entry
+- Wi-Fi, Bluetooth, USB 2.0/3.0, and audio
+- RX 5700 XT graphics acceleration
+- Smooth Bilibili video playback and screen sharing
+
+The wired Realtek interface was not retested for this release because the
+machine currently uses Wi-Fi. Other macOS versions remain unverified unless
+explicitly documented here.
+
+本次 OpenCore 1.0.7 已在 **macOS Sequoia 15.2** 实际启动并完成测试：macOS 与
+Windows 双系统引导、无重复 `NO NAME` 启动项、Wi-Fi、蓝牙、USB 2.0/3.0、声音、
+RX 5700 XT 图形加速、Bilibili 视频播放和屏幕共享均正常。由于当前使用 Wi-Fi，
+本次没有重新测试 Realtek 有线网卡。未在此明确列出的系统版本均视为未实测。
+
+## macOS update policy / 系统更新策略
+
+- Minor updates within the currently validated major version, such as macOS
+  15.x updates, can normally be installed manually after making a working EFI
+  backup. OCLP root patches may be removed by the macOS update and must be
+  reinstalled afterward to restore Broadcom Wi-Fi support.
+- Major upgrades, especially macOS 15 to macOS 26, are not recommended until
+  OpenCore, AMD patches, Kexts, USB mapping, and OCLP wireless patches have all
+  been reviewed and tested together.
+- Do not leave automatic macOS upgrades enabled on this Hackintosh. The
+  recommended tool is
+  [`macupdatectl`](https://github.com/hermanzhaozzzz/.my_shell_envs/blob/main/bin/macupdatectl).
+  Run `macupdatectl` and choose **“只屏蔽大版本，保留安全更新”**. The tool also
+  provides restore and full-block modes; full blocking also pauses system
+  security-data updates, so it is not the default recommendation here.
+
+- 当前已验证大版本内的小版本更新（例如 macOS 15.x）通常可以在备份 EFI 后手动
+  安装。系统更新会清除 OCLP Root Patch，更新完成后需要重新执行 Root Patch，
+  才能恢复 Broadcom Wi-Fi。
+- 不建议直接进行大版本升级，尤其不要直接从 macOS 15 升级 macOS 26；应先重新
+  审核并组合测试 OpenCore、AMD 补丁、Kext、USB 映射和 OCLP 无线补丁。
+- 推荐使用
+  [`macupdatectl`](https://github.com/hermanzhaozzzz/.my_shell_envs/blob/main/bin/macupdatectl)
+  管理更新。运行 `macupdatectl` 后选择 **“只屏蔽大版本，保留安全更新”**。如果选择
+  “屏蔽所有系统更新”，系统安全数据更新也会暂停，因此这里不将其作为默认方案。
 
 ## Required SMBIOS: `MacPro7,1` / 必须仿冒的机型
 
