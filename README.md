@@ -56,6 +56,25 @@ REMEMBER to update your SMBIOS info.
 > [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS) 生成自己的 Serial、MLB、
 > SystemUUID 和 ROM，不要直接使用仓库内的身份信息。
 
+## Required SMBIOS: `MacPro7,1` / 必须仿冒的机型
+
+This Ryzen 9 3900X + RX 5700 XT build must use the **`MacPro7,1`** SMBIOS.
+Do not use `iMac20,2`: the Ryzen 9 3900X has no integrated GPU, while an iMac
+SMBIOS expects an iGPU to handle some background graphics and video workloads.
+On macOS 15.2, using `iMac20,2` caused observable stuttering during Bilibili
+video playback and screen sharing. Switching to `MacPro7,1` allowed the RX 5700
+XT to handle those workloads and removed the stuttering in testing. See
+[Dortania's SMBIOS guidance](https://dortania.github.io/OpenCore-Install-Guide/extras/smbios-support.html)
+for the rationale behind using an iMac Pro or Mac Pro SMBIOS on CPUs without an
+iGPU.
+
+这套 Ryzen 9 3900X + RX 5700 XT 配置必须仿冒 **`MacPro7,1`**，不要使用
+`iMac20,2`。Ryzen 9 3900X 没有核显，而普通 iMac 的 SMBIOS 会假定系统存在核显，
+并可能把部分后台图形和视频任务交给核显路径。在 macOS 15.2 的实际测试中，
+`iMac20,2` 会导致 Bilibili 视频播放及屏幕共享出现卡顿；切换为 `MacPro7,1`
+后，这些任务由 RX 5700 XT 承担，卡顿消失。这里的关键是准确使用
+**`MacPro7,1`**，而不是任意 Mac Pro 或 iMac 机型。
+
 ![image](pictures/SMBIOSinfo.jpg)
 
 Works fine:
