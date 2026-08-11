@@ -43,7 +43,8 @@
 > [!WARNING]
 > 公开仓库中的 SMBIOS 身份仅为演示值。请使用
 > [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS) 生成自己的 Serial、MLB、
-> SystemUUID 和 ROM，不要直接使用仓库中的身份信息。
+> SystemUUID 和 ROM，**并且在 GenSMBIOS 中必须选择 `MacPro7,1` 机型**。
+> 不要选择其他 Mac 机型，也不要直接使用仓库中的身份信息。
 
 ## 理论支持与实测范围
 

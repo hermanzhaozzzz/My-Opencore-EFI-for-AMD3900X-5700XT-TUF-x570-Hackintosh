@@ -43,8 +43,9 @@ This EFI is intended for systems using the same or closely matching hardware.
 > [!WARNING]
 > The SMBIOS identifiers in this public repository are demonstration values.
 > Generate your own Serial, MLB, SystemUUID and ROM with
-> [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS). Do not reuse the included
-> identifiers.
+> [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS), and **make sure the model
+> selected in GenSMBIOS is `MacPro7,1`**. Do not select another Mac model, and
+> do not reuse the identifiers included in this repository.
 
 ## Compatibility and tested scope
 
