@@ -47,27 +47,6 @@ This EFI is intended for systems using the same or closely matching hardware.
 > selected in GenSMBIOS is `MacPro7,1`**. Do not select another Mac model, and
 > do not reuse the identifiers included in this repository.
 
-## Boot-path requirement
-
-> [!IMPORTANT]
-> This repository and its release archive intentionally contain
-> `EFI/OC/OpenCore.efi` but **do not contain `EFI/BOOT/BOOTx64.efi`**. This is
-> the configuration tested on the maintainer's machine and avoids reintroducing
-> the duplicate `NO NAME` boot entry that was previously removed.
-
-- The motherboard firmware must contain a UEFI boot entry that points directly
-  to `\EFI\OC\OpenCore.efi`.
-- On a new disk or after firmware boot entries are lost, use the motherboard's
-  **Add New Boot Option** feature or a trusted UEFI shell to recreate that
-  entry and select `\EFI\OC\OpenCore.efi`.
-- Some firmware only discovers the standard fallback path
-  `\EFI\BOOT\BOOTx64.efi`. Adding that fallback loader may be necessary on such
-  systems, but it is outside this tested distribution and can create duplicate
-  or `NO NAME` entries. Back up a known-good EFI before changing the boot path.
-- This is therefore not a universal drop-in EFI for unrelated hardware. Replace
-  the demonstration SMBIOS identity and review every hardware-specific setting
-  before booting.
-
 ## Compatibility and tested scope
 
 ### Theoretical coverage
@@ -175,15 +154,6 @@ run **Post-Install Root Patch**, and reboot.
 - [Use the RX 5700 XT from PyTorch through MPS/Metal](tutorial_pytorch-via-this_AMD5700xtGPU/README.md) —
   tested `uv` and Conda installation, minimal GPU verification, a performance
   check and measured results.
-
-## License and third-party components
-
-Original material owned by this repository's maintainer is provided under the
-terms in [LICENSE](LICENSE). Bundled OpenCore files, Kexts, Apple components,
-AMD kernel patches and other upstream material retain their own copyright and
-license terms; they are not relicensed by this project. See
-[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for sources, versions and
-license information.
 
 ## Support this project
 

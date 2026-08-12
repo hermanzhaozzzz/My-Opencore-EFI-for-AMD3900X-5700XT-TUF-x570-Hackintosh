@@ -9,8 +9,8 @@ documentation, tutorial code, and repository-specific configuration changes.
 
 It does not apply to bundled third-party binaries, firmware drivers, Kexts,
 Apple components, OpenCore resources, upstream patch data, or other material
-identified in THIRD_PARTY_NOTICES.md. Those items remain subject to their own
-copyright and license terms.
+not owned by Herman ZHAO. Those items remain subject to their own copyright and
+license terms and are not relicensed by this repository.
 
 MIT License
 ===========
