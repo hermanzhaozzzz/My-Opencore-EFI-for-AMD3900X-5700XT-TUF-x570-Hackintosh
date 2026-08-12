@@ -1,45 +1,56 @@
 # Use the RX 5700 XT from PyTorch on macOS
 
-[English](README.md) | [简体中文](README_CN.md)
+**English** | [简体中文](README_CN.md)
 
-This tutorial shows how to use an AMD Radeon RX 5700 XT from PyTorch through
-the macOS MPS/Metal backend on this x86_64 AMD Hackintosh.
+Yes, it works—and PyTorch is using the RX 5700 XT.
 
-Open [the English Jupyter Notebook](install_pytorch_mps_rx5700xt.ipynb) for:
+On this Ryzen 9 3900X Hackintosh, PyTorch accesses the RX 5700 XT through the
+macOS MPS/Metal backend. A successful check reports the device as `mps:0`.
+Because this computer has no integrated GPU, there is no second GPU to confuse
+with that result.
 
-- separate `uv` and Conda installation instructions;
-- a beginner-friendly explanation of MPS and `mps:0`;
-- minimal GPU verification code;
-- a short matrix-performance check;
-- measured results from this machine;
-- guidance for moving a model and its inputs to MPS.
+For the quickest start, open the
+[English Jupyter Notebook](install_pytorch_mps_rx5700xt.ipynb), choose either
+the `uv` or Conda installation method, and run the environment check, minimal
+verification and short benchmark in order.
+
+## Results from this machine
+
+| Test | Result |
+|---|---:|
+| MPS device | Passed on `mps:0` |
+| Short matrix test | **6.36 TFLOP/s** |
+| Five-minute average | **6.49 TFLOP/s** |
+| GPU utilization during the stress test | About 95%–100% |
+| Maximum GPU die temperature | 97°C |
+
+The GPU remained fully loaded during the stress test, confirming that MPS
+acceleration and the RX 5700 XT were working correctly. Your result will vary
+with background load, GPU clocks and cooling. It does not need to match these
+numbers exactly. A 97°C die temperature is high, so check cooling before long
+training runs.
 
 ## Tested environment
 
-| Item | Tested configuration |
+| Item | Configuration |
 |---|---|
-| CPU | AMD Ryzen 9 3900X |
-| GPU | AMD Radeon RX 5700 XT 8 GB |
-| Architecture | x86_64 |
-| macOS | 15.2 Sequoia |
-| Metal | Metal 3 |
+| CPU / GPU | Ryzen 9 3900X / Radeon RX 5700 XT 8 GB |
+| macOS | Sequoia 15.2, x86_64, Metal 3 |
 | Python | 3.11 |
 | PyTorch | 2.2.2 |
 | NumPy | 1.26.4 |
 
-PyTorch 2.2.x is the final release line that provides official prebuilt
-packages for macOS x86_64, so the tutorial deliberately uses this older,
-tested environment.
+This tutorial pins PyTorch 2.2.2 because the 2.2.x line was the last to provide
+official macOS x86_64 packages. Current Apple Silicon builds are not a
+replacement for the Intel-architecture package required by this Hackintosh.
 
-## Measured performance
+## What the notebook includes
 
-| Test | Result |
-|---|---:|
-| Minimal MPS check | Passed on `mps:0` |
-| Notebook short test | **6.36 TFLOP/s** |
-| Five-minute average | **6.49 TFLOP/s** |
-| GPU utilization during stress test | About 95%–100% |
-| Maximum observed GPU die temperature | 97°C |
+- separate `uv` and Conda installation methods;
+- a minimal MPS check that can be copied into another project;
+- a short RX 5700 XT benchmark that finishes in a few seconds;
+- an example of moving a model and its inputs to MPS;
+- practical notes on memory limits, unsupported operations and CPU fallback.
 
-These numbers are reference results rather than required pass thresholds.
-Cooling should be checked before running long training workloads.
+CUDA and ROCm are not required. On macOS, PyTorch uses MPS/Metal to access this
+AMD GPU.

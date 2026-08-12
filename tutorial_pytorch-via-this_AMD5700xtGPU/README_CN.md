@@ -1,43 +1,52 @@
-# 在 macOS 上通过 PyTorch 使用 RX 5700 XT
+# 在 macOS 上用 PyTorch 调用 RX 5700 XT
 
-[English](README.md) | [简体中文](README_CN.md)
+[English](README.md) | **简体中文**
 
-这篇教程介绍如何在 x86_64 AMD 黑苹果中，通过 macOS 的 MPS/Metal 后端，
-让 PyTorch 使用 AMD Radeon RX 5700 XT。
+可以用，而且调用的就是 RX 5700 XT。
 
-打开[中文 Jupyter Notebook](install_pytorch_mps_rx5700xt_CN.ipynb)，可以查看：
+在这台 Ryzen 9 3900X 黑苹果上，PyTorch 通过 macOS 的 MPS/Metal 后端使用
+RX 5700 XT。验证成功时，PyTorch 会把它显示为 `mps:0`；这台电脑没有核显，
+因此不会混淆到其他 GPU。
 
-- 相互独立的 `uv` 和 Conda 安装方法；
-- 面向初学者的 MPS 与 `mps:0` 说明；
-- 最小 GPU 验证代码；
-- 简短的矩阵性能测试；
-- 这台电脑的实测成绩；
-- 把模型及输入数据放到 MPS 的方法。
+如果你只想尽快跑起来，直接打开
+[中文 Jupyter Notebook](install_pytorch_mps_rx5700xt_CN.ipynb)，选择 `uv` 或
+Conda 其中一种安装方式，然后依次运行环境检查、最小验证和性能短测。
+
+## 本机实测结果
+
+| 项目 | 结果 |
+|---|---:|
+| MPS 设备 | `mps:0`，验证通过 |
+| 短时矩阵测试 | **6.36 TFLOP/s** |
+| 五分钟压力测试平均性能 | **6.49 TFLOP/s** |
+| 压力测试 GPU 占用 | 约 95%–100% |
+| 最高 GPU Die 温度 | 97°C |
+
+压力测试期间显卡能够持续满载，说明 MPS 加速和 RX 5700 XT 工作正常。分数会受到
+后台负载、显卡频率和散热影响，不必与这里完全一致。97°C 已经偏高，长时间训练前
+建议先检查散热。
 
 ## 已验证环境
 
-| 项目 | 测试配置 |
+| 项目 | 配置 |
 |---|---|
-| CPU | AMD Ryzen 9 3900X |
-| GPU | AMD Radeon RX 5700 XT 8 GB |
-| 系统架构 | x86_64 |
-| macOS | 15.2 Sequoia |
-| Metal | Metal 3 |
+| CPU / GPU | Ryzen 9 3900X / Radeon RX 5700 XT 8 GB |
+| macOS | Sequoia 15.2，x86_64，Metal 3 |
 | Python | 3.11 |
 | PyTorch | 2.2.2 |
 | NumPy | 1.26.4 |
 
-PyTorch 2.2.x 是最后一代提供官方 macOS x86_64 安装包的版本，因此教程有意
-使用这套较旧但已经完成验证的环境。
+这里固定使用 PyTorch 2.2.2，是因为 PyTorch 2.2.x 是最后一代提供官方 macOS
+x86_64 安装包的版本。Apple Silicon 上的新版本 PyTorch 不适用于这台 Intel
+架构的黑苹果。
 
-## 本机实测性能
+## Notebook 包含什么
 
-| 测试 | 结果 |
-|---|---:|
-| 最小 MPS 验证 | 通过，设备为 `mps:0` |
-| Notebook 短测 | **6.36 TFLOP/s** |
-| 五分钟压力测试平均性能 | **6.49 TFLOP/s** |
-| 压力测试 GPU 占用 | 约 95%–100% |
-| 观察到的最高 GPU Die 温度 | 97°C |
+- `uv` 和 Conda 两种互不混用的安装方式；
+- 一段可以复制到其他项目的最小 MPS 验证代码；
+- 一个几秒钟即可完成的 RX 5700 XT 性能短测；
+- 在自己的模型中把模型和数据移动到 MPS 的示例；
+- 显存不足、算子不支持和 CPU fallback 等常见问题说明。
 
-这些数字用于参考，并不是安装成功必须达到的分数。长时间训练前应先检查散热。
+CUDA 和 ROCm 都不需要安装。在 macOS 中，PyTorch 使用 MPS/Metal 调用这张
+AMD 显卡。
