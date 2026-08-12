@@ -1,22 +1,45 @@
-# OpenCore EFI for AMD Ryzen 9 3900X, RX 5700 XT and ASUS TUF X570
+# Hackintosh EFI for Ryzen 9 3900X and RX 5700 XT
 
-[English](README.md) | [简体中文](README_CN.md)
+**English** | [简体中文](README_CN.md)
 
-Created and maintained by Herman ZHAO
+This is the OpenCore EFI currently running on my Ryzen 9 3900X, RX 5700 XT and
+ASUS TUF Gaming X570 desktop. It is intended for the same hardware or systems
+with a very similar configuration.
 
-Contact: hermanzhaozzzz@gmail.com
+| OpenCore | Tested macOS | SMBIOS |
+|---|---|---|
+| **1.0.7 RELEASE** | **macOS Sequoia 15.2** | **`MacPro7,1` is required** |
 
-Last maintained: August 12, 2026
+Download the latest usable build from
+[Releases](https://github.com/hermanzhaozzzz/My-Opencore-EFI-for-AMD3900X-5700XT-TUF-x570-Hackintosh/releases).
 
-## Release status
+## Before you use it
 
-| Item | Version or status |
-|---|---|
-| OpenCore | **1.0.7 RELEASE** (`REL-107-2026-03-20`) |
-| Actually tested macOS | **macOS Sequoia 15.2** |
-| Required SMBIOS | **`MacPro7,1`** |
+1. Back up your current bootable EFI.
+2. Use [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS) to generate Serial,
+   MLB, SystemUUID and ROM values for **`MacPro7,1`**, then replace the example
+   values in this repository.
+3. Use `config.plist` for normal booting. I recommend
+   [OCAuxiliaryTools](https://github.com/ic005k/OCAuxiliaryTools) for editing it.
+4. The included USB map was made for my motherboard and devices. Check it again
+   if your port layout is different.
 
-This EFI is intended for systems using the same or closely matching hardware.
+> [!WARNING]
+> Do not reuse the public SMBIOS identity, and do not select `iMac20,2` for this build.
+
+## Why `MacPro7,1` matters
+
+I originally used `iMac20,2`. The system booted, but Bilibili video and screen
+sharing stuttered badly. The Ryzen 9 3900X has no integrated GPU. After changing
+the SMBIOS to `MacPro7,1`, those workloads were handled correctly by the
+RX 5700 XT and the stuttering disappeared.
+
+I then played **eight 4K videos simultaneously** without visible stuttering and
+ran a sustained PyTorch MPS stress test on the RX 5700 XT without issues. The
+test code and results are available in the
+[PyTorch MPS tutorial](tutorial_pytorch-via-this_AMD5700xtGPU/README.md).
+
+![SMBIOS information](pictures/SMBIOSinfo.jpg)
 
 ## Hardware
 
@@ -25,142 +48,73 @@ This EFI is intended for systems using the same or closely matching hardware.
 | CPU | AMD Ryzen 9 3900X 3.8 GHz |
 | GPU | Sapphire Radeon RX 5700 XT 8 GB NITRO+ Special Edition |
 | Motherboard | ASUS TUF Gaming X570, non-Wi-Fi edition |
-| Power supply | Seasonic GX750 750 W, 80 Plus Gold, fully modular |
+| Memory | Kingston DDR4, 16 GB × 4, 64 GB total, 2666 MHz |
+| macOS SSD | Samsung 970 EVO Plus |
+| Windows SSD | Western Digital SN550 500 GB NVMe |
+| Wi-Fi / Bluetooth | Fenvi FV-T919 |
+| Audio | Monitor audio over HDMI/DisplayPort; motherboard audio jacks also tested working |
 | Case | NZXT H710i, black/red |
 | CPU cooler | NZXT Kraken X73 360 mm AIO |
-| Memory | Kingston DDR4, 64 GB total, 16 GB × 4, 2666 MHz |
-| Windows SSD | Western Digital SN550 500 GB NVMe |
-| macOS SSD | Samsung 970 EVO Plus |
-| Wi-Fi / Bluetooth | Fenvi FV-T919 |
-| Audio | Monitor audio over HDMI/DisplayPort; motherboard audio jacks tested working |
+| Power supply | Seasonic GX750 750 W, 80 Plus Gold, fully modular |
 
-## Before using this EFI
+## Tested features
 
-- Use `config.plist` for normal booting.
-- OCAuxiliaryTools is recommended for editing `config.plist`.
-- Generate your own SMBIOS identity before the first boot.
-
-> [!WARNING]
-> The SMBIOS identifiers in this public repository are demonstration values.
-> Generate your own Serial, MLB, SystemUUID and ROM with
-> [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS), and **make sure the model
-> selected in GenSMBIOS is `MacPro7,1`**. Do not select another Mac model, and
-> do not reuse the identifiers included in this repository.
-
-## Compatibility and tested scope
-
-### Theoretical coverage
-
-- The bundled AMD Vanilla kernel patches cover Darwin 17 through Darwin 25,
-  corresponding to macOS 10.13 High Sierra through macOS 26 Tahoe. This is the
-  kernel-patch range, not a guarantee that the complete EFI works on every
-  release in that range.
-- With the `MacPro7,1` SMBIOS, RX 5700 XT and the current Broadcom/OCLP wireless
-  stack, this repository is maintained primarily for macOS 14 Sonoma and
-  macOS 15 Sequoia.
-- The AMD patch limits include macOS 26 Tahoe, but the complete EFI, wireless
-  root patches, USB stack and third-party Kexts have not been validated together
-  on Tahoe. A direct major-version upgrade is not recommended.
-
-### Actually validated
-
-OpenCore 1.0.7 was booted and tested on **macOS Sequoia 15.2**. The following
-items were verified after the upgrade:
-
-- macOS and Windows boot correctly from the OpenCore picker;
-- Wi-Fi and Bluetooth;
-- USB 2.0 and USB 3.0;
-- monitor audio over HDMI/DisplayPort and motherboard audio jacks;
-- RX 5700 XT graphics acceleration;
-- smooth Bilibili video playback and screen sharing.
-
-The Realtek wired network interface was not retested for this release because
-the machine currently uses Wi-Fi. macOS versions not explicitly listed above
-should be treated as untested.
-
-## macOS update policy
-
-- Minor updates within the currently validated major version, such as macOS
-  15.x updates, can normally be installed manually after creating a known-good
-  EFI backup.
-- A macOS update may remove the OCLP root patches. Reapply the post-install root
-  patches afterward to restore Broadcom Wi-Fi support.
-- Major upgrades, especially macOS 15 to macOS 26, are not recommended until
-  OpenCore, AMD patches, Kexts, USB mapping and OCLP wireless patches have been
-  reviewed and tested together.
-- Do not leave automatic major upgrades enabled on this Hackintosh. The
-  recommended tool is
-  [`macupdatectl`](https://github.com/hermanzhaozzzz/.my_shell_envs/blob/main/bin/macupdatectl).
-  Run it and choose **“只屏蔽大版本，保留安全更新”** (block major upgrades while
-  keeping security updates). Full blocking also pauses system security-data
-  updates and is therefore not the default recommendation.
-
-## Required SMBIOS: `MacPro7,1`
-
-This Ryzen 9 3900X and RX 5700 XT build must use **`MacPro7,1`**. Do not use
-`iMac20,2`: the Ryzen 9 3900X has no integrated GPU, while an iMac SMBIOS may
-expect an iGPU path for background graphics and video workloads.
-
-On macOS 15.2, `iMac20,2` caused visible stuttering during Bilibili video
-playback and screen sharing. Switching to `MacPro7,1` allowed the RX 5700 XT to
-handle those workloads and removed the stuttering in testing. Further testing
-with **eight simultaneous 4K video streams remained very smooth**. A sustained
-PyTorch MPS stress test on the RX 5700 XT also completed without issues. See the
-[PyTorch MPS tutorial and measured results](tutorial_pytorch-via-this_AMD5700xtGPU/README.md)
-for the environment setup and test code.
-
-For the rationale behind using an iMac Pro or Mac Pro SMBIOS on a CPU without
-an iGPU, see
-[Dortania's SMBIOS guidance](https://dortania.github.io/OpenCore-Install-Guide/extras/smbios-support.html).
-
-![SMBIOS information](pictures/SMBIOSinfo.jpg)
-
-## Working features
-
-- AMD CPU support
+- macOS and Windows dual boot
 - RX 5700 XT graphics acceleration
-- Wi-Fi
-- Bluetooth
-- AirDrop
-- Sleep and wake
-- Monitor audio over HDMI/DisplayPort and motherboard audio jacks
+- Bilibili playback, eight simultaneous 4K videos and screen sharing
+- PyTorch on the RX 5700 XT through MPS/Metal
+- Wi-Fi, Bluetooth and AirDrop
+- USB 2.0, USB 3.0, sleep and wake
+- HDMI/DisplayPort audio and motherboard audio jacks
 
-## Known limitation
+I used Wi-Fi during this round of testing and did not retest the Realtek wired
+network interface.
 
-- Sidecar is unavailable because this CPU has no integrated graphics.
+### Known limitations
+
+- Sidecar is unavailable.
 - iPhone Mirroring is unavailable.
 
-## BIOS notes
+## Wi-Fi and Bluetooth
 
-- Enable AMD CPU virtualization if VMware is required.
-- Keep FCLK at or below 1800 MHz; this machine uses 1800 MHz.
-- Keep memory frequency at or below 3600 MHz; this machine currently uses
-  2666 MHz.
-
-## Wi-Fi and Bluetooth after installation
-
-After the first successful macOS login, Wi-Fi and Bluetooth may still be
-unavailable. Install
+If the Fenvi FV-T919 does not work after the first macOS login, install
 [OpenCore Legacy Patcher](https://dortania.github.io/OpenCore-Legacy-Patcher/),
 run **Post-Install Root Patch**, and reboot.
 
-## Extra Tutorials and Resources
+A system update may remove the root patches. If Wi-Fi or Bluetooth disappears,
+apply them again.
 
-- [LiquidBar](https://github.com/hermanzhaozzzz/LiquidBar) — a utility I developed
-  to control NZXT case fans and liquid-cooling pump power while monitoring
-  temperatures. It is strongly recommended for users with the same NZXT case
-  and liquid cooler.
+## macOS updates
 
-- [Use the RX 5700 XT from PyTorch through MPS/Metal](tutorial_pytorch-via-this_AMD5700xtGPU/README.md) —
-  tested `uv` and Conda installation, minimal GPU verification, a performance
-  check and measured results.
+This EFI theoretically covers macOS 10.13 High Sierra through macOS 26 Tahoe,
+but the version I have fully tested is **macOS Sequoia 15.2**. For daily use, I
+recommend staying with Sonoma or Sequoia.
 
-## Support this project
+- Minor updates within the same macOS release are reasonable to try after
+  backing up the EFI.
+- A direct major-version upgrade is not recommended; OpenCore, Kexts and OCLP
+  may all need to be updated together.
+- I recommend [`macupdatectl`](https://github.com/hermanzhaozzzz/.my_shell_envs/blob/main/bin/macupdatectl)
+  to block major upgrades while keeping security updates enabled.
 
-Preparing, updating and thoroughly testing this EFI and its tutorials takes
-considerable time and effort. If this project has helped you, please consider
-buying me a coffee. Support is entirely optional, and your encouragement is
-sincerely appreciated. Thank you!
+## Extra tutorials and tools
+
+- [LiquidBar](https://github.com/hermanzhaozzzz/LiquidBar): my utility for
+  controlling NZXT case fans and liquid-cooling pump power while monitoring
+  temperatures. I strongly recommend it for the same case and cooler.
+- [Use the RX 5700 XT from PyTorch through MPS/Metal](tutorial_pytorch-via-this_AMD5700xtGPU/README.md):
+  `uv` and Conda setup, minimal verification code, a stress test and measured
+  results from this machine.
+
+## Contact and support
+
+- Maintainer: Herman ZHAO
+- Email: hermanzhaozzzz@gmail.com
+- Last updated: August 12, 2026
+
+Maintaining the EFI, testing it through repeated reboots and writing the related
+tutorials all take time. If this project saved you some trouble, you are welcome
+to buy me a coffee. Support is entirely optional, and feedback is always welcome.
 
 | Alipay | WeChat Pay |
 |:---:|:---:|
