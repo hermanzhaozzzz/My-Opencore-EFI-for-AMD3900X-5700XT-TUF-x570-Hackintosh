@@ -52,10 +52,8 @@ replacement for the Intel-architecture package required by this Hackintosh.
 - an example of moving a model and its inputs to MPS;
 - practical notes on memory limits, unsupported operations and CPU fallback.
 
-Start JupyterLab normally for everyday use. The command
-`env -u PYTORCH_ENABLE_MPS_FALLBACK` is not an MPS installation requirement.
-It is only used for strict verification, where it prevents unsupported
-operations from silently falling back to the CPU.
+Start JupyterLab normally; use `env -u PYTORCH_ENABLE_MPS_FALLBACK` only for
+strict GPU verification, where CPU fallback must be disabled.
 
 CUDA and ROCm are not required. On macOS, PyTorch uses MPS/Metal to access this
 AMD GPU.

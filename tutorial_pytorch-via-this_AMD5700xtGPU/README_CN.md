@@ -48,9 +48,8 @@ x86_64 安装包的版本。Apple Silicon 上的新版本 PyTorch 不适用于�
 - 在自己的模型中把模型和数据移动到 MPS 的示例；
 - 显存不足、算子不支持和 CPU fallback 等常见问题说明。
 
-正常使用直接启动 JupyterLab 即可。`env -u PYTORCH_ENABLE_MPS_FALLBACK`
-不是 MPS 的安装要求，只在严格验证时使用：它会临时关闭 CPU fallback，避免
-不受支持的算子悄悄转到 CPU 执行。
+正常使用直接启动 JupyterLab；只有严格验证 GPU 时，才需要用
+`env -u PYTORCH_ENABLE_MPS_FALLBACK` 临时关闭 CPU fallback。
 
 CUDA 和 ROCm 都不需要安装。在 macOS 中，PyTorch 使用 MPS/Metal 调用这张
 AMD 显卡。
